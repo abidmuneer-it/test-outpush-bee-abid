@@ -8,7 +8,7 @@ const websiteSchema = mongoose.Schema(
     publisher: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Publisher',
-      // required: true,
+      required: true,
     },
     domainUrl: { ...RequiredString, unique: true },
     defaultCountry: RequiredString,

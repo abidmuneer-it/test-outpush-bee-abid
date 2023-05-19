@@ -1,6 +1,5 @@
-const httpStatus = require('http-status');
 const pick = require('../utils/pick');
-const ApiError = require('../utils/ApiError');
+
 const catchAsync = require('../utils/catchAsync');
 const { websiteService } = require('../services');
 
@@ -11,6 +10,18 @@ const getWebsites = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const addWebsite = catchAsync(async (req, res) => {
+  const result = await websiteService.addWebsite(req.body);
+  res.send(result);
+});
+
+const getWebsite = catchAsync(async (req, res) => {
+  const result = await websiteService.getWebsite(req.params);
+  res.send(result);
+});
+
 module.exports = {
   getWebsites,
+  addWebsite,
+  getWebsite,
 };

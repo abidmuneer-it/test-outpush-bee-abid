@@ -5,7 +5,12 @@ const RequiredString = { type: String, required: true };
 
 const websiteSchema = mongoose.Schema(
   {
-    domainUrl: RequiredString,
+    publisher: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'Publisher',
+      required: true,
+    },
+    domainUrl: { ...RequiredString, unique: true },
     defaultCountry: RequiredString,
     defaultTimezone: RequiredString,
     defaultLanguage: RequiredString,
